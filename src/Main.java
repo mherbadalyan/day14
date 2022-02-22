@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        String str = "Hello World!!!";
+        String str = "Hello World!!!55";
 
         System.out.println(size("Hello"));
 
@@ -53,7 +53,7 @@ public class Main {
      */
     private static char charAt(String str, int index) {
         char[] array = str.toCharArray();
-        if (index >= array.length || index <0) return ' ';
+        if (index >= array.length || index < 0) return ' ';
         return array[index];
     }
 
@@ -141,9 +141,9 @@ public class Main {
         str = str.toUpperCase();
         int size = str.length();
         for (int i = 0; i < size; i++) {
-            if (str.charAt(i) + index > 90){
-                System.out.print((char)((str.charAt(i) + index)-26));
-            }else System.out.print((char) (str.charAt(i) + index));
+            if (str.charAt(i) + index > 90) {
+                System.out.print((char) ((str.charAt(i) + index) - 26));
+            } else System.out.print((char) (str.charAt(i) + index));
         }
     }
 
@@ -225,16 +225,16 @@ public class Main {
      */
     private static void printCountOfDuplicateNumbers(String str) {
         int size = size(str);
-        String newStr = "";
-        for (int i = 0; i < size -1; i++) {
-            for (int j = i + 1; j < size ; j++) {
+        StringBuilder newStr = new StringBuilder();
+        for (int i = 0; i < size - 1; i++) {
+            for (int j = i + 1; j < size; j++) {
                 if (str.charAt(i) == str.charAt(j) && !contains(newStr, str.charAt(i))) {
-                    newStr += str.charAt(i);
+                    newStr.append(str.charAt(i));
                     break;
                 }
             }
         }
-        System.out.println(size(newStr));
+        System.out.println(newStr.length());
     }
 
     /**
@@ -273,10 +273,28 @@ public class Main {
 
     /**
      * checking is given char vowel or not
+     *
      * @param ch
      * @return
      */
     private static boolean isVowel(char ch) {
-        return (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' || ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U' );
+        return (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' || ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U');
+    }
+
+    /**
+     * checking is given char contains in given Stringbuilder object
+     *
+     * @param str
+     * @param ch
+     * @return
+     */
+    private static boolean contains(StringBuilder str, char ch) {
+        int size = str.length();
+        for (int i = 0; i < size; i++) {
+            if (str.charAt(i) == ch) {
+                return true;
+            }
+        }
+        return false;
     }
 }
